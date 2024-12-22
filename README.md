@@ -1,5 +1,3 @@
-Here's the README.md file in Markdown syntax that you can directly use on GitHub:
-
 # Shipment Delay Prediction
 
 This project is a *Shipment Delay Prediction System* designed to predict whether a shipment will be delayed or delivered on time. The project combines machine learning, Flask API development, and a user-friendly web interface for real-time predictions.

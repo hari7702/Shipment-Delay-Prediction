@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment Delay Prediction</title>
+</head>
+<body>
+    <h1>Shipment Delay Prediction</h1>
+    <form id="predictionForm">
+        <label for="origin">Origin:</label>
+        <input type="number" id="origin" name="Origin" required><br><br>
+
+        <label for="destination">Destination:</label>
+        <input type="number" id="destination" name="Destination" required><br><br>
+
+        <label for="vehicleType">Vehicle Type:</label>
+        <input type="number" id="vehicleType" name="Vehicle Type" required><br><br>
+
+        <label for="distance">Distance (km):</label>
+        <input type="number" id="distance" name="Distance (km)" required><br><br>
+
+        <label for="weather">Weather Conditions:</label>
+        <input type="number" id="weather" name="Weather Conditions" required><br><br>
+
+        <label for="traffic">Traffic Conditions:</label>
+        <input type="number" id="traffic" name="Traffic Conditions" required><br><br>
+
+        <label for="delivery">Delivery Delay:</label>
+        <input type="number" id="delivery" name="Delivery Delay" required><br><br>
+
+        <button type="button" onclick="makePrediction()">Predict</button>
+    </form>
+
+    <h2>Prediction Result:</h2>
+    <p id="result">Awaiting result...</p>
+
+    <script>
+        async function makePrediction() {
+            const formData = new FormData(document.getElementById("predictionForm"));
+            const data = Object.fromEntries(formData.entries());
+
+            // Convert string keys and values to numbers where needed
+            for (let key in data) {
+                data[key] = Number(data[key]);
+            }
+
+            try {
+                const response = await fetch("http://127.0.0.1:5000/predict", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+                document.getElementById("result").innerText = result.prediction || result.error;
+            } catch (error) {
+                document.getElementById("result").innerText = "Failed to connect to server.";
+            }
+        }
+    </script>
+</body>
+</html>

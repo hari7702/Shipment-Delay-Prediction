@@ -58,7 +58,7 @@ Installation
 
 1. Clone this repository:
 
-git clone https://github.com/your_username/shipment-delay-prediction.git
+git clone [https://github.com/your_username/shipment-delay-prediction.git](https://github.com/hari7702/Shipment-Delay-Prediction)
 cd shipment-delay-prediction
 
 

@@ -193,7 +193,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ---
 
 Happy Predicting!
-
-### Steps to Use:
-- Copy this code and save it in a file named README.md in the root directory of your GitHub project.
-- Push the changes to your repository, and the README will be displayed as the main project description on your GitHub page.
